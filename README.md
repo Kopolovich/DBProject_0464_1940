@@ -9,12 +9,12 @@
 
 ## 📖 Table of Contents
 1. [Introduction](#introduction)
-2. [ERD - Entity-Relationship Diagram](#erd-entityrelationshipdiagram)
-3. [DSD - Data Structure Diagram](#dsd-datastructurediagram)
+2. [ERD - Entity-Relationship Diagram](#erd---entity-relationship-diagram)
+3. [DSD - Data Structure Diagram](#dsd---data-structure-diagram)
 
 ---
 
-## 🏥 Introduction
+## Introduction
 The **Ezer Mizion** Transport Management System is designed to manage patient transportation logistics to hospitals, clinics, and other medical centers. The system maintains records of **patients**, **vehicles**, **destinations**, **drivers**, **transport assistant**, and **rides**.
 
 ### 🎯 **Main Functionality**
