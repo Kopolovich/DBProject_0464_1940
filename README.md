@@ -9,8 +9,8 @@
 
 ## 📖 Table of Contents
 1. [Introduction](#introduction)
-2. [ERD - Entity-Relationship Diagram](#erd---entity-relationship-diagram)
-3. [DSD - Data Structure Diagram](#dsd---data-structure-diagram)
+2. [ERD - Entity-Relationship Diagram](#erd-entityrelationshipdiagram)
+3. [DSD - Data Structure Diagram](#dsd-datastructurediagram)
 
 ---
 
@@ -36,4 +36,3 @@ The **Ezer Mizion** Transport Management System is designed to manage patient tr
 
 ---
 
-📌 **Note:** Please add the **ERD and DSD diagram files** to the `assets/` folder and update the image paths (`assets/erd_diagram.png` and `assets/dsd_diagram.png`) with the correct filenames.
