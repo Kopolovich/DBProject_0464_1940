@@ -27,14 +27,12 @@ The **Ezer Mizion** Transport Management System is designed to manage patient tr
 ---
 
 ## ERD - Entity-Relationship Diagram
-![צילום מסך 2025-03-24 141628](https://github.com/user-attachments/assets/b2321f32-9176-4179-913b-dad9314067b2)
-
+![ERD](https://github.com/user-attachments/assets/bba8d985-750e-42d8-bdab-7fc84a903914)
 
 ---
 
 ## DSD - Data Structure Diagram
-![צילום מסך 2025-03-24 144532](https://github.com/user-attachments/assets/ebc98cae-e29a-45e6-b227-b53bcb55cda0)
-
+![DSD](https://github.com/user-attachments/assets/93b057d7-0ba5-42d7-91ce-8dfbb8eff4e7)
 
 
 ---
