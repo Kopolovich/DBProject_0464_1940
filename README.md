@@ -88,6 +88,8 @@ We backed up our populated database and restored it on another user account to s
 
 #### SQL Queries
 
+- ##### SELECT Queries
+  
 ##### Query 1
 
 This query shows each patient with the number of past and future rides. It helps track ride history and upcoming transport needs.
