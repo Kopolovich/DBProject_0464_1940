@@ -15,6 +15,12 @@
      - [DSD - Data Structure Diagram](#dsd---data-structure-diagram)
      - [Data Insertion Methods](#data-insertion-methods)
      - [Database Backup and Restore](#database-backup-and-restore)
+   - [Stage 2: Constraints and SQL Queries](#stage-2-constraints-and-sql-queries)  
+     - [SQL Queries](#sql-queries)  
+       - [SELECT Queries](#select-queries)  
+       - [DELETE Queries](#delete-queries)  
+       - [UPDATE Queries](#update-queries)  
+     - [Constraints](#constraints)
 
 ---
 
@@ -77,3 +83,13 @@ We backed up our populated database and restored it on another user account to s
 
 
 ---
+
+### Stage 2: Constraints and SQL Queries
+
+#### SQL Queries
+
+- ##### SELECT Queries
+- ##### DELETE Queries
+- ##### UPDATE Queries
+
+#### Constraints
