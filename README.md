@@ -88,68 +88,69 @@ We backed up our populated database and restored it on another user account to s
 
 #### SQL Queries
 
-- ##### SELECT Queries
-  ****Query 1****
-  This query shows each patient with the number of past and future rides. It helps track ride history and upcoming transport needs.
+##### Query 1
 
-![image](https://github.com/user-attachments/assets/938b97cc-c59d-4a60-93f1-5ece6abf4a50)
+This query shows each patient with the number of past and future rides. It helps track ride history and upcoming transport needs.
+
+![image](https://github.com/user-attachments/assets/938b97cc-c59d-4a60-93f1-5ece6abf4a50)  
 ![image](https://github.com/user-attachments/assets/9bca6070-a939-4e0d-a2c8-9af4b67ab0ce)
-    
-  ****Query 2****
-     This query returns the top 3 volunteers with the highest number of rides for each past month.
-     It helps identify the most active volunteers over time and can be used for recognition or performance tracking.
 
-   ![image](https://github.com/user-attachments/assets/aba89053-119b-48fa-a2a7-96832834dd25)
-   ![image](https://github.com/user-attachments/assets/5d36cfdd-56e6-4d43-b376-e999c9309a5d)
+##### Query 2
 
-  ****Query 3****
+This query returns the top 3 volunteers with the highest number of rides for each past month.  
+It helps identify the most active volunteers over time and can be used for recognition or performance tracking.
 
-   This query returns all drivers who are available for night shifts, showing how many night rides they have actually completed.
-   It helps evaluate how active night drivers are during their declared availability hours (from 19:00 to 07:00).
-   -- Show night-available drivers and how many night rides they have completed
+![image](https://github.com/user-attachments/assets/aba89053-119b-48fa-a2a7-96832834dd25)  
+![image](https://github.com/user-attachments/assets/5d36cfdd-56e6-4d43-b376-e999c9309a5d)
 
-![image](https://github.com/user-attachments/assets/feea35e2-265b-4e0d-81bf-e6a8986262ee)
+##### Query 3
+
+This query returns all drivers who are available for night shifts, showing how many night rides they have actually completed.  
+It helps evaluate how active night drivers are during their declared availability hours (from 19:00 to 07:00).
+
+![image](https://github.com/user-attachments/assets/feea35e2-265b-4e0d-81bf-e6a8986262ee)  
 ![image](https://github.com/user-attachments/assets/3d837720-c059-4424-ae80-bf39787a40d7)
 
-  ****Query 4****
-  This query lists all volunteers who have a birthday in the current month.
-  It also calculates their current age. This can be used to send birthday greetings or recognize volunteers.
+##### Query 4
 
-  ![image](https://github.com/user-attachments/assets/652feca7-2529-4601-810c-0e174f674967)
-  ![image](https://github.com/user-attachments/assets/1240fa5e-2e88-465d-93fd-ec4f0a33aa6c)
+This query lists all volunteers who have a birthday in the current month.  
+It also calculates their current age. This can be used to send birthday wishes or recognize volunteers.
 
-  ****Query 5****
+![image](https://github.com/user-attachments/assets/652feca7-2529-4601-810c-0e174f674967)  
+![image](https://github.com/user-attachments/assets/1240fa5e-2e88-465d-93fd-ec4f0a33aa6c)
 
-  This query finds all patient-driver pairs who live in the same city.
-  It compares the city in the driver's profile to the city extracted from the patient's address.
-  This can help optimize ride assignments based on location proximity.
+##### Query 5
 
-  ![image](https://github.com/user-attachments/assets/0b45f899-6687-434e-b1e6-1330897b6592)
-  ![image](https://github.com/user-attachments/assets/9f2e1665-96a6-49a3-bddf-850ca1f859e4)
+This query finds all patient-driver pairs who live in the same city.  
+It compares the city in the driver's profile to the city extracted from the patient's address.  
+This can help optimize ride assignments based on location proximity.
 
-  ****Query 6****
+![image](https://github.com/user-attachments/assets/0b45f899-6687-434e-b1e6-1330897b6592)  
+![image](https://github.com/user-attachments/assets/9f2e1665-96a6-49a3-bddf-850ca1f859e4)
 
-   This query shows how many vehicles of each type exist in the system, and how many of them are available today (not assigned to any ride).
-   It helps monitor vehicle availability for the current day based on ride scheduling.\
+##### Query 6
 
-   ![image](https://github.com/user-attachments/assets/1f1c164a-8eb5-43fb-9ea8-adf3d69dda0a)
-   ![image](https://github.com/user-attachments/assets/575bbcca-31eb-4359-ad8a-5ab005d80894)
+This query shows how many vehicles of each type exist in the system, and how many of them are available today (not assigned to any ride).  
+It helps monitor vehicle availability for the current day based on ride scheduling.
 
-  ****Query 7****
+![image](https://github.com/user-attachments/assets/1f1c164a-8eb5-43fb-9ea8-adf3d69dda0a)  
+![image](https://github.com/user-attachments/assets/575bbcca-31eb-4359-ad8a-5ab005d80894)
 
-   This query returns the top 5 most popular destinations for each year based on the number of rides.
-   It helps identify which medical centers receive the highest transport demand annually.
+##### Query 7
 
-   ![image](https://github.com/user-attachments/assets/c459101d-2398-479a-8985-9bfb050d5990)
-   ![image](https://github.com/user-attachments/assets/25a56a65-e837-4d84-a505-13b39dc69a93)
-   
-  ****Query 8****
+This query returns the top 5 most popular destinations for each year based on the number of rides.  
+It helps identify which medical centers receive the highest transport demand annually.
 
-  This query returns all volunteers with medical training who are not assigned as assistants in any ride today.
-  It helps find available medically trained assistants for new rides.
+![image](https://github.com/user-attachments/assets/c459101d-2398-479a-8985-9bfb050d5990)  
+![image](https://github.com/user-attachments/assets/25a56a65-e837-4d84-a505-13b39dc69a93)
 
-  ![image](https://github.com/user-attachments/assets/85f8fefa-fcc4-4aab-9652-f90fd4f523dd)
-  ![image](https://github.com/user-attachments/assets/937ddac5-6787-44db-ae4f-3e7f4f7af380)
+##### Query 8
+
+This query returns all volunteers with medical training who are not assigned as assistants in any ride today.  
+It helps find available medically trained assistants for new rides.
+
+![image](https://github.com/user-attachments/assets/85f8fefa-fcc4-4aab-9652-f90fd4f523dd)  
+![image](https://github.com/user-attachments/assets/937ddac5-6787-44db-ae4f-3e7f4f7af380)
 
   
 - ##### DELETE Queries
