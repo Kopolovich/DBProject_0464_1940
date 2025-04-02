@@ -89,255 +89,67 @@ We backed up our populated database and restored it on another user account to s
 #### SQL Queries
 
 - ##### SELECT Queries
-  **Query 1**
+  ****Query 1****
   This query shows each patient with the number of past and future rides. It helps track ride history and upcoming transport needs.
 
-SELECT 
-    p.Patient_ID,
-    p.First_Name,
-    p.Last_Name,
+![image](https://github.com/user-attachments/assets/938b97cc-c59d-4a60-93f1-5ece6abf4a50)
+![image](https://github.com/user-attachments/assets/9bca6070-a939-4e0d-a2c8-9af4b67ab0ce)
     
-   -- Past rides (before today) 
-    (SELECT COUNT(*) 
-     FROM Ride r1 
-     WHERE r1.Patient_ID = p.Patient_ID 
-       AND r1.Ride_Date < CURRENT_DATE) AS past_rides,
-    
-   -- Future rides (today and onward)
-    (SELECT COUNT(*) 
-     FROM Ride r2 
-     WHERE r2.Patient_ID = p.Patient_ID 
-       AND r2.Ride_Date >= CURRENT_DATE) AS future_rides
-FROM 
-    Patient p
-ORDER BY 
-    past_rides DESC;
-![צילום מסך 2025-04-02 172626](https://github.com/user-attachments/assets/2d4acfe7-9dda-4a26-8b4c-3ab838ef8d59)
-
-    
-  **Query 2**
+  ****Query 2****
      This query returns the top 3 volunteers with the highest number of rides for each past month.
      It helps identify the most active volunteers over time and can be used for recognition or performance tracking.
 
-   WITH stats AS (
-    SELECT 
-        EXTRACT(YEAR FROM r.Ride_Date) AS ride_year,
-        EXTRACT(MONTH FROM r.Ride_Date) AS ride_month,
-        v.Volunteer_ID,
-        MIN(v.First_Name || ' ' || v.Last_Name) AS full_name,  
-        COUNT(*) AS total_rides
-    FROM 
-        Ride r
-    JOIN Volunteer v ON v.Volunteer_ID = r.Driver_ID OR v.Volunteer_ID = r.Assistant_ID
-    WHERE 
-        r.Ride_Date < CURRENT_DATE
-    GROUP BY 
-        ride_year, ride_month, v.Volunteer_ID
-   ),
-   
-   -- Build a list of distinct year-month combinations
-   month_list AS (
-       SELECT DISTINCT ride_year, ride_month FROM stats
-   )
+   ![image](https://github.com/user-attachments/assets/aba89053-119b-48fa-a2a7-96832834dd25)
+   ![image](https://github.com/user-attachments/assets/5d36cfdd-56e6-4d43-b376-e999c9309a5d)
 
-SELECT 
-    m.ride_year,
-    m.ride_month,
-
-   -- Get the top volunteer by ride count
-    (SELECT s1.Volunteer_ID || ' - ' || s1.full_name || ' (' || s1.total_rides || ')'
-     FROM stats s1
-     WHERE s1.ride_year = m.ride_year AND s1.ride_month = m.ride_month
-     ORDER BY s1.total_rides DESC, s1.Volunteer_ID
-     LIMIT 1 OFFSET 0) AS top1,
-
-   -- Get the second top volunteer
-    (SELECT s2.Volunteer_ID || ' - ' || s2.full_name || ' (' || s2.total_rides || ')'
-     FROM stats s2
-     WHERE s2.ride_year = m.ride_year AND s2.ride_month = m.ride_month
-     ORDER BY s2.total_rides DESC, s2.Volunteer_ID
-     LIMIT 1 OFFSET 1) AS top2,
-
-   -- Get the third top volunteer
-    (SELECT s3.Volunteer_ID || ' - ' || s3.full_name || ' (' || s3.total_rides || ')'
-     FROM stats s3
-     WHERE s3.ride_year = m.ride_year AND s3.ride_month = m.ride_month
-     ORDER BY s3.total_rides DESC, s3.Volunteer_ID
-     LIMIT 1 OFFSET 2) AS top3
-
-   FROM month_list m
-   ORDER BY m.ride_year, m.ride_month;
-![צילום מסך 2025-04-02 173329](https://github.com/user-attachments/assets/653b716b-2d99-47fe-a0a4-8e9e1d717fe3)
-
-
-
-  **Query 3**
+  ****Query 3****
 
    This query returns all drivers who are available for night shifts, showing how many night rides they have actually completed.
    It helps evaluate how active night drivers are during their declared availability hours (from 19:00 to 07:00).
    -- Show night-available drivers and how many night rides they have completed
 
-SELECT 
-    d.Volunteer_ID,
-    v.First_Name,
-    v.Last_Name,
-    COUNT(*) AS night_rides_count
-FROM 
-    Driver d
-NATURAL JOIN Volunteer v
-JOIN Ride r ON r.Driver_ID = d.Volunteer_ID
-WHERE 
-    d.Night_Avail = 'Y'  -- Only drivers who declared night availability
+![image](https://github.com/user-attachments/assets/feea35e2-265b-4e0d-81bf-e6a8986262ee)
+![image](https://github.com/user-attachments/assets/3d837720-c059-4424-ae80-bf39787a40d7)
 
-   -- Include rides between 19:00 and 07:00
-    AND (
-        EXTRACT(HOUR FROM r.Pickup_Time) >= 19 OR  
-        EXTRACT(HOUR FROM r.Pickup_Time) < 7        
-    )
-
-   AND r.Ride_Date < CURRENT_DATE  -- Only past rides
-GROUP BY 
-    d.Volunteer_ID, v.First_Name, v.Last_Name
-ORDER BY 
-    night_rides_count DESC;
-
-![צילום מסך 2025-04-02 173908](https://github.com/user-attachments/assets/fde5f7e0-e552-42a5-a3c2-0f95ab79f506)
-
-
-  **Query 4**
+  ****Query 4****
   This query lists all volunteers who have a birthday in the current month.
   It also calculates their current age. This can be used to send birthday greetings or recognize volunteers.
 
-  SELECT 
-    v.Volunteer_ID,
-    v.First_Name,
-    v.Last_Name,
-    v.Date_of_Birth,
-    EXTRACT(YEAR FROM AGE(CURRENT_DATE, v.Date_of_Birth)) AS age
-FROM 
-    Volunteer v
-WHERE 
-    EXTRACT(MONTH FROM v.Date_of_Birth) = EXTRACT(MONTH FROM CURRENT_DATE)
-ORDER BY 
-    EXTRACT(DAY FROM v.Date_of_Birth);
-![צילום מסך 2025-04-02 174132](https://github.com/user-attachments/assets/bf0fd372-d403-4d04-b1ca-a7e9cc7ebfe8)
+  ![image](https://github.com/user-attachments/assets/652feca7-2529-4601-810c-0e174f674967)
+  ![image](https://github.com/user-attachments/assets/1240fa5e-2e88-465d-93fd-ec4f0a33aa6c)
 
-
-  **Query 5**
+  ****Query 5****
 
   This query finds all patient-driver pairs who live in the same city.
   It compares the city in the driver's profile to the city extracted from the patient's address.
   This can help optimize ride assignments based on location proximity.
 
-  SELECT 
-    p.Patient_ID,
-    p.First_Name || ' ' || p.Last_Name AS Patient_Name,
-    d.Volunteer_ID AS Driver_ID,
-    v.First_Name || ' ' || v.Last_Name AS Driver_Name,
-    TRIM(v.City) AS City
-   FROM 
-       Patient p
-   JOIN Ride r ON r.Patient_ID = p.Patient_ID
-   JOIN Driver d ON d.Volunteer_ID = r.Driver_ID
-   JOIN Volunteer v ON v.Volunteer_ID = d.Volunteer_ID
-   WHERE 
-       TRIM(v.City) = TRIM(SUBSTRING(p.Address FROM ', (.+)$'))
-   GROUP BY 
-       p.Patient_ID, p.First_Name, p.Last_Name,
-       d.Volunteer_ID, v.First_Name, v.Last_Name, v.City, p.Address
-   ORDER BY City;
+  ![image](https://github.com/user-attachments/assets/0b45f899-6687-434e-b1e6-1330897b6592)
+  ![image](https://github.com/user-attachments/assets/9f2e1665-96a6-49a3-bddf-850ca1f859e4)
 
-  ![image](https://github.com/user-attachments/assets/8cbb3f29-ae56-4c0e-8259-2871961d140d)
-
-  **Query 6**
+  ****Query 6****
 
    This query shows how many vehicles of each type exist in the system, and how many of them are available today (not assigned to any ride).
    It helps monitor vehicle availability for the current day based on ride scheduling.\
 
-   SELECT 
-       v.Type AS Vehicle_Type,
-       COUNT(*) AS total_vehicles,
-       COUNT(*) - COUNT(r_today.Vehicle_ID) AS available_today
-  FROM 
-    Vehicle v
-  LEFT JOIN (
-    SELECT DISTINCT Vehicle_ID
-    FROM Ride
-    WHERE Ride_Date = CURRENT_DATE
-   ) AS r_today
-   ON v.Vehicle_ID = r_today.Vehicle_ID
-   GROUP BY  v.Type
-   ORDER BY  v.Type;
+   ![image](https://github.com/user-attachments/assets/1f1c164a-8eb5-43fb-9ea8-adf3d69dda0a)
+   ![image](https://github.com/user-attachments/assets/575bbcca-31eb-4359-ad8a-5ab005d80894)
 
-![image](https://github.com/user-attachments/assets/abc8c224-3c0f-4151-b4e0-77f0cd126ea6)
-
-  **Query 7**
+  ****Query 7****
 
    This query returns the top 5 most popular destinations for each year based on the number of rides.
    It helps identify which medical centers receive the highest transport demand annually.
 
-   SELECT 
-       stats.ride_year,
-       stats.Destination_Name,
-       stats.Destination_Address,
-       stats.ride_count
-   FROM (
-       -- Count how many rides went to each destination per year
-       SELECT 
-           EXTRACT(YEAR FROM r.Ride_Date) AS ride_year,
-           r.Destination_Name,
-           r.Destination_Address,
-           COUNT(*) AS ride_count
-       FROM 
-           Ride r
-       GROUP BY 
-           EXTRACT(YEAR FROM r.Ride_Date), r.Destination_Name, r.Destination_Address
-   ) AS stats
-   WHERE (
-       -- Keep only destinations that are among the top 5 for their year
-       SELECT COUNT(*) 
-       FROM (
-           SELECT 
-               r2.Destination_Name,
-               r2.Destination_Address,
-               COUNT(*) AS ride_count
-           FROM Ride r2
-           WHERE EXTRACT(YEAR FROM r2.Ride_Date) = stats.ride_year
-           GROUP BY r2.Destination_Name, r2.Destination_Address
-           HAVING COUNT(*) > stats.ride_count
-       ) AS higher
-   ) < 5
-   ORDER BY 
-       stats.ride_year, stats.ride_count DESC;
-
-![image](https://github.com/user-attachments/assets/3114b8ed-847b-4e25-817e-113ab1a2640a)
-
-  **Query 8**
+   ![image](https://github.com/user-attachments/assets/c459101d-2398-479a-8985-9bfb050d5990)
+   ![image](https://github.com/user-attachments/assets/25a56a65-e837-4d84-a505-13b39dc69a93)
+   
+  ****Query 8****
 
   This query returns all volunteers with medical training who are not assigned as assistants in any ride today.
   It helps find available medically trained assistants for new rides.
 
-   SELECT 
-       Volunteer_ID,
-       First_Name || ' ' || Last_Name AS Full_Name,
-       Phone_Number
-   FROM 
-       Transport_Assistant
-   NATURAL JOIN Volunteer  -- Join by Volunteer_ID
-   WHERE 
-       Has_Medical_Training = 'Y'  -- Only assistants with medical training
-   
-   -- Exclude assistants already assigned today
-       AND Volunteer_ID NOT IN (
-           SELECT Assistant_ID 
-           FROM Ride 
-           WHERE Ride_Date = CURRENT_DATE
-             AND Assistant_ID IS NOT NULL
-       )
-   ORDER BY 
-       Last_Name, First_Name;
-
-![image](https://github.com/user-attachments/assets/6a89581c-795c-4608-8eb3-8f8afcdbfa4b)
+  ![image](https://github.com/user-attachments/assets/85f8fefa-fcc4-4aab-9652-f90fd4f523dd)
+  ![image](https://github.com/user-attachments/assets/937ddac5-6787-44db-ae4f-3e7f4f7af380)
 
   
 - ##### DELETE Queries
