@@ -163,7 +163,6 @@ It helps find available medically trained assistants for new rides.
   Update Query 1 – Night Availability
   
      This update automatically marks drivers as available for night shifts if they have already completed more than one ride during night hours.
-  
      It reflects actual driver activity and keeps the system data up to date based on performance.
   
   ![צילום מסך 2025-04-03 102706](https://github.com/user-attachments/assets/de372603-ca44-47dc-aef2-f9caf33d53ce)
@@ -178,8 +177,7 @@ It helps find available medically trained assistants for new rides.
 
    Update Query 2 – Haifa Ride Delay
    
-   On November 28th, 2025, a power outage occurred in the city of Haifa, affecting hospitals and clinics.
-      
+   On November 28th, 2025, a power outage occurred in the city of Haifa, affecting hospitals and clinics.  
    As a response, all scheduled rides to Haifa on that day were delayed by one hour to ensure proper coordination and patient safety.
    
   ![צילום מסך 2025-04-03 104804](https://github.com/user-attachments/assets/c9110125-1672-4fb2-bbfd-392f9778ef42)
@@ -194,8 +192,7 @@ It helps find available medically trained assistants for new rides.
 
    Update Query 3 – Volunteer Name Change
    
-   While volunteering together, Noa Kaplan and Ori Shemesh met and formed a special connection.
-      
+   While volunteering together, Noa Kaplan and Ori Shemesh met and formed a special connection.  
    After getting married, Noa changed her last name to Shemesh — and the system was updated to reflect her new chapter in life.
    
 ![צילום מסך 2025-04-03 110915](https://github.com/user-attachments/assets/e3360e23-2f94-4a9e-9dd1-3d13617a482c)
