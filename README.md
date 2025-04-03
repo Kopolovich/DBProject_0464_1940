@@ -203,6 +203,6 @@ It helps find available medically trained assistants for new rides.
       
    After update:
    
-  ![צילום מסך 2025-04-03 110946](https://github.com/user-attachments/assets/3dada275-f384-4f21-9970-1274bbfb87d6)
+![עדכון חתונה](https://github.com/user-attachments/assets/1a132419-062c-4b08-a414-5a00790e1375)
 
 #### Constraints
