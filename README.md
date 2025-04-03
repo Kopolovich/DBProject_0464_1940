@@ -156,6 +156,36 @@ It helps find available medically trained assistants for new rides.
 
   
 - ##### DELETE Queries
+
+  
 - ##### UPDATE Queries
+  
+  Update Query 1 – Night Availability
+     This update automatically marks drivers as available for night shifts if they have already completed more than one ride during night hours.
+     It reflects actual driver activity and keeps the system data up to date based on performance.
+  ![צילום מסך 2025-04-03 102706](https://github.com/user-attachments/assets/de372603-ca44-47dc-aef2-f9caf33d53ce)
+   Before update:
+![צילום מסך 2025-04-03 102341](https://github.com/user-attachments/assets/4ec496ce-bcd0-4c70-90a1-6f132124da92)
+   After update:
+
+  ![צילום מסך 2025-04-03 102541](https://github.com/user-attachments/assets/df156a57-f817-4186-9cd1-4f4792d530aa)
+
+   Update Query 2 – Haifa Ride Delay
+      On November 28th, 2025, a power outage occurred in the city of Haifa, affecting hospitals and clinics.
+      As a response, all scheduled rides to Haifa on that day were delayed by one hour to ensure proper coordination and patient safety.
+  ![צילום מסך 2025-04-03 104804](https://github.com/user-attachments/assets/c9110125-1672-4fb2-bbfd-392f9778ef42)
+     Before update:
+![צילום מסך 2025-04-03 104624](https://github.com/user-attachments/assets/4523cec0-4f00-4f5a-b10a-10cff484adbe)
+     After update:
+  ![צילום מסך 2025-04-03 104845](https://github.com/user-attachments/assets/7c458f2f-0af8-4b76-87c1-7a6d404f9673)
+
+   Update Query 3 – Volunteer Name Change
+      While volunteering together, Noa Kaplan and Ori Shemesh met and formed a special connection.
+      After getting married, Noa changed her last name to Shemesh — and the system was updated to reflect her new chapter in life.
+![צילום מסך 2025-04-03 110915](https://github.com/user-attachments/assets/e3360e23-2f94-4a9e-9dd1-3d13617a482c)
+      Before update:
+  ![צילום מסך 2025-04-03 110836](https://github.com/user-attachments/assets/73c6643a-259d-4ed8-87ff-62af3a77a8ab)
+      After update:
+  ![צילום מסך 2025-04-03 110946](https://github.com/user-attachments/assets/3dada275-f384-4f21-9970-1274bbfb87d6)
 
 #### Constraints
