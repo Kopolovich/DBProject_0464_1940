@@ -156,6 +156,53 @@ It helps find available medically trained assistants for new rides.
 
   
 - ##### DELETE Queries
+   DELETE Query 1 – Remove Old Rides
+  
+   This query deletes all ride records that took place before the beginning of the current year.
+   It helps reduce clutter in the database and keep only recent or relevant transportation history.
+  
+![צילום מסך 2025-04-03 115530](https://github.com/user-attachments/assets/2b4fef55-f339-4ed4-9b65-68f08118531b)
+
+   Before delete:
+
+  ![צילום מסך 2025-04-03 115407](https://github.com/user-attachments/assets/f8c89fa2-813f-4852-bd37-14510580c0a9)
+
+   After delete:
+
+  ![צילום מסך 2025-04-03 115626](https://github.com/user-attachments/assets/2c3d9de1-52fb-4661-990e-f854dbccaf12)
+
+
+   DELETE Query 2 – Clean Up Unused Volunteers
+  
+   This query removes volunteers who are not registered as drivers or assistants.
+   These may be outdated entries or volunteers who never became active in the system.
+
+![צילום מסך 2025-04-03 121521](https://github.com/user-attachments/assets/225c4c0b-90aa-44f6-bf9b-e885e135be79)
+
+   Before delete:
+
+![צילום מסך 2025-04-03 121105](https://github.com/user-attachments/assets/9a1a2e7c-952b-445e-bc5c-150bbc3d7a1d)
+
+   After delete:
+
+   ![צילום מסך 2025-04-03 121602](https://github.com/user-attachments/assets/cd2e77fc-b875-4ff7-b2db-98a5b531feb4)
+
+
+   DELETE Query 3 – Remove Inactive Patients
+   
+   Patients who haven’t used the transport service in the last 6 months and have no upcoming rides are considered inactive.  
+   This query removes them from the system to keep the patient list up to date.
+
+   
+![צילום מסך 2025-04-03 124357](https://github.com/user-attachments/assets/7ee67f8f-82c2-48a7-963e-2cb928dea7eb)
+
+   Before delete:
+
+   ![צילום מסך 2025-04-03 124225](https://github.com/user-attachments/assets/c1ae86f4-7cc9-4fb0-9cd1-58fcb169e217)
+
+   After delete:
+
+   ![צילום מסך 2025-04-03 124436](https://github.com/user-attachments/assets/0c815e6e-255c-4a09-876e-0d1d7a0107b8)
 
   
 - ##### UPDATE Queries
