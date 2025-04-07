@@ -1,4 +1,8 @@
-<img src="https://github.com/user-attachments/assets/611c87c9-331b-4c18-8dfa-9ccbdcd0fc88" width="80"/> **Transport Management System - Ezer Mizion**
+<div align="center" style="display: flex; align-items: center;">
+  <img src="https://github.com/user-attachments/assets/611c87c9-331b-4c18-8dfa-9ccbdcd0fc88" width="80" style="margin-right: 20px;"/>
+  <h1 style="display: inline-block; margin: 0;">Transport Management System - Ezer Mizion</h1>
+</div>
+
 
 ## 📌 
 **Submitted by:** Esther Rosen & Noa Kopolovich  
