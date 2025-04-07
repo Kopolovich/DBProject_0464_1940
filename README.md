@@ -253,3 +253,53 @@ It helps find available medically trained assistants for new rides.
 ![עדכון חתונה](https://github.com/user-attachments/assets/1a132419-062c-4b08-a414-5a00790e1375)
 
 #### Constraints
+
+**Constraint 1 – Foreign Key with Cascade Delete (Ride → Patient)**
+
+If a patient is deleted, all of their related rides will also be deleted automatically.  
+This keeps the data clean and avoids rides linked to non-existent patients.
+
+![image](https://github.com/user-attachments/assets/63e90b92-9117-4924-9e09-ec26873062c8)
+
+The screenshot shows that we were able to successfully delete 4 patients,
+even though they were referenced as foreign keys in the Ride table.  
+This worked because of the ON DELETE CASCADE constraint we added to the foreign key between Ride and Patient.
+
+![צילום מסך 2025-04-03 124357](https://github.com/user-attachments/assets/f2856af5-687d-4317-8ebf-f85083a80399)
+
+**Constraint 2 - Valid Vehicle Type Check**
+
+The vehicle type can only be one of: 'Accessible van', 'car', or 'Ambulance'.
+This ensures consistency and prevents incorrect vehicle types from being added.
+
+![image](https://github.com/user-attachments/assets/677dda88-794c-49e8-8f66-72639d15460b)
+
+![צילום מסך 2025-04-07 143039](https://github.com/user-attachments/assets/53c073c1-ebe3-4db0-a3e2-03156ea1caab)
+
+**Constraint 3 - Is_Disabled Field Check**
+
+The Is_Disabled field must be either 'Y' (Yes) or 'N' (No).  
+This makes the patient's accessibility status clear and standardized.
+
+![image](https://github.com/user-attachments/assets/1c732d83-3ec2-4508-b2fa-ae4ebe63ccfb)
+
+![צילום מסך 2025-04-07 143233](https://github.com/user-attachments/assets/f1475255-5550-484f-918d-ec92d23ebec7)
+
+**Constraint 4 - Gender Field Check**
+
+The Gender field must be 'F' (Female) or 'M' (Male).  
+This keeps gender values consistent and easy to use in the system.
+
+![image](https://github.com/user-attachments/assets/8227dbc9-ff4d-4a03-946a-d555de434d5d)
+
+![צילום מסך 2025-04-07 143331](https://github.com/user-attachments/assets/d0a064fc-6491-4521-b964-d52b812e2c27)
+
+**Constraint 5 - Default Value for Medical Training**
+
+If Has_Medical_Training is not entered for a transport assistant, it will default to 'N'.  
+This prevents missing data and assumes no training unless specified.
+
+![image](https://github.com/user-attachments/assets/f8e2f9aa-b4f5-4148-be15-a530132fcb2f)
+
+![צילום מסך 2025-04-07 144316](https://github.com/user-attachments/assets/1660d75b-a6b1-487a-8d6b-cdfdefd04c58)
+
