@@ -1,4 +1,4 @@
-<img src="![ChatGPT Image Apr 7, 2025, 03_17_59 PM](https://github.com/user-attachments/assets/611c87c9-331b-4c18-8dfa-9ccbdcd0fc88)" width="80"/> **Transport Management System - Ezer Mizion**
+<img src="https://github.com/user-attachments/assets/611c87c9-331b-4c18-8dfa-9ccbdcd0fc88" width="80"/> **Transport Management System - Ezer Mizion**
 
 ## 📌 
 **Submitted by:** Esther Rosen & Noa Kopolovich  
