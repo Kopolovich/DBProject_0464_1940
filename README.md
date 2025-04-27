@@ -25,7 +25,7 @@
        - [DELETE Queries](#delete-queries)  
        - [UPDATE Queries](#update-queries)  
      - [Constraints](#constraints)
-
+     - [Rollback and Commit](#rollback-and-commit)
 ---
 
 ## Introduction
@@ -306,4 +306,18 @@ This prevents missing data and assumes no training unless specified.
 ![image](https://github.com/user-attachments/assets/f8e2f9aa-b4f5-4148-be15-a530132fcb2f)
 
 ![צילום מסך 2025-04-07 144316](https://github.com/user-attachments/assets/1660d75b-a6b1-487a-8d6b-cdfdefd04c58)
+
+#### Rollback and Commit
+
+**Rollback:**
+
+![צילום מסך 2025-04-24 104348](https://github.com/user-attachments/assets/61e95012-03fe-452a-b7f4-b0a1323e7fd9)
+
+![צילום מסך 2025-04-24 104429](https://github.com/user-attachments/assets/aefbac93-7491-4d8a-8de7-65fcbf8ae755)
+
+**Commit:**
+
+![צילום מסך 2025-04-24 104614](https://github.com/user-attachments/assets/bf39e45b-127f-4973-900c-82826f55d7bc)
+
+![צילום מסך 2025-04-24 104654](https://github.com/user-attachments/assets/dd97a413-ecd9-4a40-9298-534a162c0d98)
 
