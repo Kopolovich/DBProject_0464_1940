@@ -28,7 +28,7 @@
      - [Rollback and Commit](#rollback-and-commit)
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
      - [Integration of the Medical Equipment Loan Unit](#integration-of-the-medical-equipment-loan-unit)
-     - [Rollback and Commit](#rollback-and-commit)
+     - [Views](#views)
 ---
 
 ## Introduction
@@ -326,7 +326,7 @@ This prevents missing data and assumes no training unless specified.
 
 
 ### Stage 3: Integration and Views
-**Integration of the Medical Equipment Loan Unit into Transport Management System**
+#### Integration of the Medical Equipment Loan Unit into Transport Management System
 
 DSD of Medical Equipment Loan Unit: 
 
@@ -388,11 +388,58 @@ Integration Process:
 ![image](https://github.com/user-attachments/assets/5d75a08d-3057-40bd-bc05-29bed0f06726)
 
 
+#### Views
 
+📄 View 1: view_transport_summary
+
+This view summarizes patient rides, showing the patient name, ride date, destination, driver, and assistant (if any).  
+It joins the Ride, Patient, Medical_Center, Driver, and Volunteer tables to present a clear overview of each transport event.  
+Useful for tracking ride assignments and reviewing volunteer involvement.
+
+![image](https://github.com/user-attachments/assets/a748ec43-6944-4875-bc57-9d281292caa1)
+
+![צילום מסך 2025-05-07 145316](https://github.com/user-attachments/assets/851cd171-1a87-44e3-baab-f792d4a3fcd2)
+
+
+✅ Query 1 – Number of rides per assistant (including their full name), only for rides where an assistant was present.
   
+![image](https://github.com/user-attachments/assets/51e44027-9d4d-44a2-935d-c3c7615e52b0)
+
+
+✅ Query 2 – List all patients who had rides in a specific month (March 2025)
+
+![image](https://github.com/user-attachments/assets/40ebd9bd-9270-46b2-9839-0da9c66790e9)
 
 
 
+📄 View 2: view_borrow_summary
+
+This view provides a complete summary of medical equipment borrowing activities.
+It includes the patient name and contact info, the product borrowed, the borrowing and return dates, and the service center where the product was collected.
+
+It combines data from Borrow, Patient, Product, and Medical_Center, presenting it as a single unified structure for easy querying and analysis.
+
+![image](https://github.com/user-attachments/assets/3e0b1980-35a6-4e69-84fb-17b5b16799e1)
+
+![image](https://github.com/user-attachments/assets/d4f51335-8682-4a9d-a7f9-3d88f4729250)
+
+
+✅ Query 1 – Patients and Their List of Unreturned Products
+
+This query returns all patients who currently have unreturned medical equipment.
+For each patient, it shows their name, phone number, and a comma-separated list of the product names they have not yet returned.
+It provides a clear, readable summary that is ideal for contacting patients or generating return reminders.
+
+![image](https://github.com/user-attachments/assets/456457cd-b239-487d-a762-a10131828037)
+
+
+✅ Query 2 – Most Commonly Borrowed Products
+
+This query returns a list of all medical products and the total number of times each one was borrowed.
+It helps identify which items are in highest demand across all patients and time periods.
+This information is useful for inventory planning, purchasing decisions, and prioritizing stock availability for popular equipment.
+
+![image](https://github.com/user-attachments/assets/cf02841a-a9f4-4ca6-8709-8d9d1c5442cb)
 
 
 
