@@ -365,23 +365,28 @@ Integration Process:
 
  Part 1 – Create tables for equipment management
 
- ![image](https://github.com/user-attachments/assets/a9d5a21e-b93d-4ff6-9248-55cf1d51e3c0)
+![image](https://github.com/user-attachments/assets/a8c4305e-0510-4859-9228-38acb9deadee)
+
 
  Part 2 – Convert Destination to Medical_Center and integrate service centers
 
- ![image](https://github.com/user-attachments/assets/43f5a353-a874-41e9-8a69-efc683171988)
+![image](https://github.com/user-attachments/assets/71801484-0e52-49c7-aeba-968d7d1ba403)
+
 
   Part 3 – Unify Patient structure and insert Client data
 
-  ![image](https://github.com/user-attachments/assets/8554b4aa-a237-4bf9-af43-6e109c5c422a)
+![image](https://github.com/user-attachments/assets/84b397dd-d192-4956-9812-97afcb862538)
+
 
   Part 4 – Create and populate Borrow table
+  
+![image](https://github.com/user-attachments/assets/43603bc8-e4c1-442a-a9ca-33f0b7655439)
 
-  ![image](https://github.com/user-attachments/assets/81d1c37e-6177-4bb0-8e6b-0566c0ccf145)
 
   Part 5 – Create Service_Assistant and import from Employee
 
-  ![image](https://github.com/user-attachments/assets/489c55f0-66f2-474a-b64b-c546334a5182)
+![image](https://github.com/user-attachments/assets/5d75a08d-3057-40bd-bc05-29bed0f06726)
+
 
 
   
