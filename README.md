@@ -26,6 +26,9 @@
        - [UPDATE Queries](#update-queries)  
      - [Constraints](#constraints)
      - [Rollback and Commit](#rollback-and-commit)
+   - [Stage 3: Integration and Views](#stage-3-integration-and-views)
+     - [Integration of the Medical Equipment Loan Unit](#integration-of-the-medical-equipment-loan-unit)
+     - [Rollback and Commit](#rollback-and-commit)
 ---
 
 ## Introduction
@@ -320,4 +323,72 @@ This prevents missing data and assumes no training unless specified.
 ![צילום מסך 2025-04-24 104614](https://github.com/user-attachments/assets/bf39e45b-127f-4973-900c-82826f55d7bc)
 
 ![צילום מסך 2025-04-24 104654](https://github.com/user-attachments/assets/dd97a413-ecd9-4a40-9298-534a162c0d98)
+
+
+### Stage 3: Integration and Views
+**Integration of the Medical Equipment Loan Unit into Transport Management System**
+
+DSD of Medical Equipment Loan Unit: 
+
+![DSD medical](https://github.com/user-attachments/assets/35d5901c-2d40-4027-9fb6-324c9a08396d)
+
+ERD of Medical Equipment Loan Unit:
+
+![ERD medical](https://github.com/user-attachments/assets/cb1d657d-d1e1-4476-8e58-aea2049c90d6)
+
+Integrated ERD:
+
+![ERD integraded](https://github.com/user-attachments/assets/0cb4166a-e3cd-4281-8d7c-9c4e10244360)
+
+Integrated DSD:
+
+![DSD integraded](https://github.com/user-attachments/assets/d7186ee6-cca4-4f4f-87b4-12c931b9b5b1)
+
+
+Integration Decisions:
+
+In this stage, we integrated the database schema of the Medical Equipment Loan Unit into the existing system of the Patient Transport Division. The goal was to unify both services into a centralized management system while preserving data integrity and minimizing duplication.
+
+Key integration decisions included:
+
+* Merging medical service centers (Service_Center) into the existing Destination table and renaming it to Medical_Center.
+
+* Creating tables for Supplier, Product, and Borrow to manage equipment loans.
+
+* Inserting real data from the original schemas using INSERT INTO ... SELECT and SQL imports.
+
+* Unifying Client with Patient while renaming and normalizing attributes.
+
+* Creating a new subtype of volunteer: Service_Assistant, based on Employee, with special fields such as Role and linked medical center.
+
+Integration Process:
+
+ Part 1 – Create tables for equipment management
+
+ ![image](https://github.com/user-attachments/assets/a9d5a21e-b93d-4ff6-9248-55cf1d51e3c0)
+
+ Part 2 – Convert Destination to Medical_Center and integrate service centers
+
+ ![image](https://github.com/user-attachments/assets/43f5a353-a874-41e9-8a69-efc683171988)
+
+  Part 3 – Unify Patient structure and insert Client data
+
+  ![image](https://github.com/user-attachments/assets/8554b4aa-a237-4bf9-af43-6e109c5c422a)
+
+  Part 4 – Create and populate Borrow table
+
+  ![image](https://github.com/user-attachments/assets/81d1c37e-6177-4bb0-8e6b-0566c0ccf145)
+
+  Part 5 – Create Service_Assistant and import from Employee
+
+  ![image](https://github.com/user-attachments/assets/489c55f0-66f2-474a-b64b-c546334a5182)
+
+
+  
+
+
+
+
+
+
 
