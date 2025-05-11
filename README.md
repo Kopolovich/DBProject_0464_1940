@@ -27,7 +27,7 @@
      - [Constraints](#constraints)
      - [Rollback and Commit](#rollback-and-commit)
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
-     - [Integration of the Medical Equipment Loan Unit](#integration-of-the-medical-equipment-loan-unit)
+     - [Integration of the Medical Equipment Loan Unit into Transport Management System](#integration-of-the-medical-equipment-loan-unit-into-transport-management-system)
      - [Views](#views)
 ---
 
