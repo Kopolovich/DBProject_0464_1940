@@ -29,6 +29,10 @@
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
      - [Integration of the Medical Equipment Loan Unit into Transport Management System](#integration-of-the-medical-equipment-loan-unit-into-transport-management-system)
      - [Views](#views)
+   - [Stage 4: PL/pgSQL Logic and Triggers](#pl/pgsql-logic-and-triggers)
+     - [Program #1 - Driver Availability & Assistant Assignment](#program-#1---driver-availability-&-assistant-assignment)
+     - [Program #2 - Expired Warranty & Overdue Borrow Handling](#program-#2---expired-warranty-&-overdue-borrow-handling)
+     - [Triggers](#triggers)
 ---
 
 ## Introduction
@@ -442,5 +446,73 @@ This information is useful for inventory planning, purchasing decisions, and pri
 ![image](https://github.com/user-attachments/assets/cf02841a-a9f4-4ca6-8709-8d9d1c5442cb)
 
 
+### Stage 4: PL/pgSQL Logic and Triggers
+#### Program #1 - Driver Availability & Assistant Assignment
 
+This main program combines two components:
+
+1. A function that checks a driver's availability over the next 14 days.
+2. A procedure that automatically assigns transport assistants to rides that currently have none.
+   
+It helps ensure proper coverage for future rides by analyzing driver availability and resolving assistant gaps.
+
+
+Function: get_driver_idle_days(driver_id INT)
+This function receives a driver ID as input and returns a refcursor pointing to a list of dates within the next 14 days on which the driver is not scheduled for any rides.
+
+The function:
+* Creates (if not already existing) a temporary table: temp_driver_idle_dates.
+* Deletes any previous data for that driver from the table.
+* Loops through the next 14 calendar days.
+* Inserts each day where the driver has no rides.
+* Returns a refcursor with the list of those idle dates, ordered chronologically.
+
+![image](https://github.com/user-attachments/assets/be267e54-e1a7-40fa-9dbc-196a5660e21f)
+
+Procedure: reassign_ride_assistants()
+This procedure scans all upcoming rides that currently have no assigned assistant (assistant_id IS NULL and ride_date >= CURRENT_DATE).
+
+For each ride:
+* It searches for a transport assistant who is not already assigned to another ride on the same day, and is not the ride's driver.
+* If such an assistant is found, the ride is updated with their ID.
+* If not, a notice is printed.
+The goal is to automatically fill open assistant slots, while ensuring availability and avoiding conflicts.
+
+![image](https://github.com/user-attachments/assets/9ca4df0a-bc36-4bf3-a3dd-8ddeeb00e12f)
+
+This screenshot shows the two components (get_driver_idle_days and reassign_ride_assistants) listed under the database functions and procedures in pgAdmin.
+
+![image](https://github.com/user-attachments/assets/a795beeb-bcbf-4267-adb8-fc6185017e28)
+
+Main Program: Random Driver Idle Check & Assistant Reassignment
+This main program performs a two-part operation:
+
+1. Driver Availability Report
+  It randomly selects one driver from the driver table and uses the get_driver_idle_days(driver_id) function to retrieve all of their idle days over the next 14 days. These idle dates are printed   as notices to the console.
+
+2. Assistant Assignment Automation
+  It then calls the reassign_ride_assistants() procedure, which automatically fills in transport assistants for all future rides that currently have none assigned.
+
+This combination provides both real-time driver availability insight and improves scheduling integrity by resolving missing assistant assignments in future rides.
+
+![image](https://github.com/user-attachments/assets/c30590f0-9371-43f6-b1db-d4e00caeac16)
+
+Ride Table Before Execution:
+This screenshot shows the state of the ride table before the program was run. Several future rides (ride_date >= CURRENT_DATE) have a NULL value in the assistant_id column, meaning no assistant is currently assigned.
+
+![image](https://github.com/user-attachments/assets/edcf15d9-71fd-462a-8460-299b89a8c01f)
+
+Program Output:
+
+![image](https://github.com/user-attachments/assets/0382147b-d133-462a-9c8b-fbff8ccce9f5)
+
+Ride Table After Execution:
+This screenshot shows the updated ride table.
+All future rides now have a value in the assistant_id column — confirming that assistants were successfully assigned where needed.
+
+![image](https://github.com/user-attachments/assets/ccf1b401-aefa-43d9-9594-04c557bd155f)
+
+
+
+#### Program #2 - Expired Warranty & Overdue Borrow Handling
 
