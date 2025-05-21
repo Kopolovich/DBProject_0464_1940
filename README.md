@@ -571,6 +571,7 @@ The returned values for the relevant records have been updated to 'L', indicatin
 #### Triggers
 
 **Volunteer Role Conflict Prevention Trigger**
+
 Purpose:
 This trigger ensures that each volunteer can hold only one role in the system — as a driver, transport_assistant, or service_assistant.
 If a volunteer already appears in one of the other two role tables, any attempt to insert them into a second role will be blocked with an error message.
@@ -591,6 +592,7 @@ Each of these roles has its own dedicated function and trigger to enforce mutual
 
 
 Role Conflict Enforcement in Action
+
 In this test, a volunteer was successfully added and assigned as a driver.
 However, when attempting to assign the same volunteer as a transport assistant, the system rejected the action with an error — confirming that the trigger correctly prevents role conflicts.
 
@@ -599,12 +601,14 @@ However, when attempting to assign the same volunteer as a transport assistant, 
 ![image](https://github.com/user-attachments/assets/11065bc6-1896-4c56-935e-553e5866f896)
 
 **Future Borrow Date Correction Trigger**
+
 This trigger ensures that no borrow record is created or updated with a borrowed_at date set in the future.
 If such a date is detected, it is automatically replaced with the current date (CURRENT_DATE) before the row is saved.
 
 ![image](https://github.com/user-attachments/assets/0b62aa81-3a72-4822-afcf-13b141e4d3b9)
 
 Test: Automatic Correction of Future Borrow Date
+
 In this test, a borrow record is inserted with a future date (2025-10-10).
 The trigger detects the invalid value and automatically replaces it with the current date.
 
