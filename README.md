@@ -581,7 +581,6 @@ The following function and trigger enforce this rule when inserting into the dri
 
 ![image](https://github.com/user-attachments/assets/56184c99-e377-4604-a7d6-23f1b03f821f)
 
-Other Volunteer Types
 The same logic was applied with separate triggers for:
 
 transport_assistant: prevents insertion if the volunteer already appears as a driver or service assistant.
