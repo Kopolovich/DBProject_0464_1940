@@ -29,9 +29,9 @@
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
      - [Integration of the Medical Equipment Loan Unit into Transport Management System](#integration-of-the-medical-equipment-loan-unit-into-transport-management-system)
      - [Views](#views)
-   - [Stage 4: PL/pgSQL Logic and Triggers](#pl/pgsql-logic-and-triggers)
-     - [Program #1 - Driver Availability & Assistant Assignment](#program-#1---driver-availability-&-assistant-assignment)
-     - [Program #2 - Expired Warranty & Overdue Borrow Handling](#program-#2---expired-warranty-&-overdue-borrow-handling)
+   - [Stage 4: PLpgSQL Logic and Triggers](#pl/pgsql-logic-and-triggers)
+     - [Program 1 - Driver Availability and Assistant Assignment](#program-#1---driver-availability-and-assistant-assignment)
+     - [Program 2 - Expired Warranty and Overdue Borrow Handling](#program-#2---expired-warranty-and-overdue-borrow-handling)
      - [Triggers](#triggers)
 ---
 
@@ -446,8 +446,8 @@ This information is useful for inventory planning, purchasing decisions, and pri
 ![image](https://github.com/user-attachments/assets/cf02841a-a9f4-4ca6-8709-8d9d1c5442cb)
 
 
-### Stage 4: PL/pgSQL Logic and Triggers
-#### Program #1 - Driver Availability & Assistant Assignment
+### Stage 4: PLpgSQL Logic and Triggers
+#### Program 1 - Driver Availability and Assistant Assignment
 
 This main program combines two components:
 
@@ -514,5 +514,5 @@ All future rides now have a value in the assistant_id column — confirming that
 
 
 
-#### Program #2 - Expired Warranty & Overdue Borrow Handling
+#### Program 2 - Expired Warranty and Overdue Borrow Handling
 
