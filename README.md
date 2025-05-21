@@ -29,7 +29,7 @@
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
      - [Integration of the Medical Equipment Loan Unit into Transport Management System](#integration-of-the-medical-equipment-loan-unit-into-transport-management-system)
      - [Views](#views)
-   - [Stage 4: PLpgSQL Logic and Triggers](#plpgsql-logic-and-triggers)
+   - [Stage 4: PLpgSQL Logic and Triggers](#stage-4-plpgsql-logic-and-triggers)
      - [Program 1 - Driver Availability and Assistant Assignment](#program-1---driver-availability-and-assistant-assignment)
      - [Program 2 - Expired Warranty and Overdue Borrow Handling](#program-2---expired-warranty-and-overdue-borrow-handling)
      - [Triggers](#triggers)
@@ -515,4 +515,98 @@ All future rides now have a value in the assistant_id column — confirming that
 
 
 #### Program 2 - Expired Warranty and Overdue Borrow Handling
+
+Function: get_unreturned_expired_warranty()
+
+This function returns a refcursor pointing to all borrow records where the borrowed product's warranty has expired and the product has not yet been marked as returned.
+* It joins the borrow and product tables.
+* Filters for borrows where returned IS DISTINCT FROM 'Y'.
+* Filters for products whose warranty_expiration is before today's date.
+* Returns these rows through a named cursor (mycursor) for further use.
+
+![image](https://github.com/user-attachments/assets/07f191cc-14b5-4b95-91f3-a4ff1afa0496)
+
+Procedure: auto_return_long_overdue_borrows()
+
+This procedure scans the borrow table for records that:
+* Have not been returned (returned IS DISTINCT FROM 'Y')
+* Were borrowed over 6 months ago
+It then:
+* Updates those borrows to 'L' (Late/Lost)
+* Prints a notice for each change
+* Checks whether the patient has any additional overdue items and prints a corresponding message
+* 
+![image](https://github.com/user-attachments/assets/b052d8df-5433-4388-808a-40e1f7a06e7f)
+
+This screenshot shows the two components (get_unreturned_expired_warranty, auto_return_long_overdue_borrows) listed under the database functions and procedures in pgAdmin.
+
+![צילום מסך 2025-05-21 170326](https://github.com/user-attachments/assets/dfa93890-3571-4ad9-8365-2aac6d58fd90)
+
+Main Program Logic
+The following block orchestrates the full process:
+1. Updates the borrow. returned field constraint to allow an additional 'L' value (for late/irrecoverable items).
+2. Calls get_unreturned_expired_warranty() to retrieve and display all currently overdue borrows due to expired warranty.
+3. Calls the procedure auto_return_long_overdue_borrows() to mark long-unreturned items as 'L'.
+
+![image](https://github.com/user-attachments/assets/886a4a4e-023b-46c8-82b9-5754ee85e457)
+
+Before Execution – Overdue Borrows (Older Than 6 Months)
+This screenshot displays the result of the following query, showing all borrow records that were borrowed more than 6 months ago and are still not marked as returned:
+
+![image](https://github.com/user-attachments/assets/5bad52f3-70f6-4c48-8953-acb9f2389ba0)
+
+Program Output:
+
+![image](https://github.com/user-attachments/assets/34e9cd5a-44d5-4cda-ba48-54c6b69c4bdb)
+![image](https://github.com/user-attachments/assets/528dc6bd-87d8-42a0-b65a-acac396ffd8b)
+
+After Execution – Overdue Borrows Marked as 'L'
+This screenshot shows the same query result after running the program.
+The returned values for the relevant records have been updated to 'L', indicating that the overdue items have been automatically marked as late or lost.
+
+![image](https://github.com/user-attachments/assets/1469eb20-0e57-4944-b235-5eecd53ea2e4)
+
+
+
+#### Triggers
+
+**Volunteer Role Conflict Prevention Trigger**
+Purpose:
+This trigger ensures that each volunteer can hold only one role in the system — as a driver, transport_assistant, or service_assistant.
+If a volunteer already appears in one of the other two role tables, any attempt to insert them into a second role will be blocked with an error message.
+
+Trigger for Driver Insertion
+The following function and trigger enforce this rule when inserting into the driver table:
+
+![image](https://github.com/user-attachments/assets/56184c99-e377-4604-a7d6-23f1b03f821f)
+
+Other Volunteer Types
+The same logic was applied with separate triggers for:
+
+transport_assistant: prevents insertion if the volunteer already appears as a driver or service assistant.
+service_assistant: prevents insertion if the volunteer already appears as a driver or transport assistant.
+Each of these roles has its own dedicated function and trigger to enforce mutual exclusivity.
+
+![image](https://github.com/user-attachments/assets/1d56902d-0ddf-428e-94b2-f1733389038a)
+
+
+Role Conflict Enforcement in Action
+In this test, a volunteer was successfully added and assigned as a driver.
+However, when attempting to assign the same volunteer as a transport assistant, the system rejected the action with an error — confirming that the trigger correctly prevents role conflicts.
+
+![image](https://github.com/user-attachments/assets/30e2770f-a556-4c28-b27e-dd48b641bbd2)
+
+![image](https://github.com/user-attachments/assets/11065bc6-1896-4c56-935e-553e5866f896)
+
+**Future Borrow Date Correction Trigger**
+This trigger ensures that no borrow record is created or updated with a borrowed_at date set in the future.
+If such a date is detected, it is automatically replaced with the current date (CURRENT_DATE) before the row is saved.
+
+![image](https://github.com/user-attachments/assets/0b62aa81-3a72-4822-afcf-13b141e4d3b9)
+
+Test: Automatic Correction of Future Borrow Date
+In this test, a borrow record is inserted with a future date (2025-10-10).
+The trigger detects the invalid value and automatically replaces it with the current date.
+
+![image](https://github.com/user-attachments/assets/8b50bddd-2061-4917-bab8-5e2d11db9453)
 
