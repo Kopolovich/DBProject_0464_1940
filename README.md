@@ -29,9 +29,9 @@
    - [Stage 3: Integration and Views](#stage-3-integration-and-views)
      - [Integration of the Medical Equipment Loan Unit into Transport Management System](#integration-of-the-medical-equipment-loan-unit-into-transport-management-system)
      - [Views](#views)
-   - [Stage 4: PLpgSQL Logic and Triggers](#pl/pgsql-logic-and-triggers)
-     - [Program 1 - Driver Availability and Assistant Assignment](#program-#1---driver-availability-and-assistant-assignment)
-     - [Program 2 - Expired Warranty and Overdue Borrow Handling](#program-#2---expired-warranty-and-overdue-borrow-handling)
+   - [Stage 4: PLpgSQL Logic and Triggers](#plpgsql-logic-and-triggers)
+     - [Program 1 - Driver Availability and Assistant Assignment](#program-1---driver-availability-and-assistant-assignment)
+     - [Program 2 - Expired Warranty and Overdue Borrow Handling](#program-2---expired-warranty-and-overdue-borrow-handling)
      - [Triggers](#triggers)
 ---
 
