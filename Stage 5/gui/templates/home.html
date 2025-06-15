@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Transport & Equipment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-white text-center">
+
+   {% include "navbar.html" %}
+
+
+    <!-- About and Ambulance section -->
+    <div class="about-wrapper">
+        <img src="{{ url_for('static', filename='images/ambulance.png') }}" alt="Ambulance" class="ambulance-img">
+        <div class="about-box">
+            <p>
+                We are honored to be there for people during their hardest moments.<br>
+                Every day, we help patients get to hospitals and clinics for critical treatments.<br>
+                Whether it’s a ride to chemotherapy or a wheelchair loaned for recovery – we’re here.<br>
+                Our team of devoted volunteers makes sure no one is left behind, no matter the distance.<br>
+                With warmth, care, and professionalism, we reach thousands across the country – every single week.
+            </p>
+            <p class="fw-bold">Because no one should fight alone.</p>
+        </div>
+    </div>
+
+    <!-- Birthdays Section -->
+    <div class="container birthday-section">
+        <h2 class="text-dark mb-4 mt-2">Happy Birthday to our amazing volunteers this week!</h2>
+        {% if birthdays %}
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                {% for b in birthdays %}
+                    <div class="birthday-box" onmouseenter="launchConfetti(event)">
+                        {{ b[0] }} - Age {{ b[1] }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted">No birthdays this week.</p>
+        {% endif %}
+    </div>
+
+    <!-- Confetti Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function launchConfetti(e) {
+            confetti({
+                particleCount: 60,
+                spread: 70,
+                origin: {
+                    x: e.clientX / window.innerWidth,
+                    y: e.clientY / window.innerHeight
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

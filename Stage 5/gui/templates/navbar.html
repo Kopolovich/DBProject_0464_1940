@@ -1,0 +1,32 @@
+{% set current_path = request.path %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="height: 70px;">
+            <span class="header">Medical Transport & Equipment</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% if current_path == '/' %}active fw-bold text-danger{% endif %}" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_path.startswith('/volunteers') %}active fw-bold text-danger{% endif %}" href="/volunteers">Volunteers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_path.startswith('/rides') %}active fw-bold text-danger{% endif %}" href="/rides">Rides</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_path.startswith('/borrowed_equipment') %}active fw-bold text-danger{% endif %}" href="/borrowed_equipment">Borrowed Equipment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_path.startswith('/patients') %}active fw-bold text-danger{% endif %}" href="/patients">Patients</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

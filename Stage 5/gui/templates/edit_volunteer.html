@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Volunteer</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include "navbar.html" %}
+
+    <div class="container mt-5">
+        <h2>Edit Volunteer #{{ id }}</h2>
+        <form method="POST">
+            <div class="row g-2 mb-3">
+                <div class="col-md-3">
+                    <input name="name" class="form-control" value="{{ v[0] }}" required>
+                </div>
+                <div class="col-md-2">
+                    <input name="dob" type="date" class="form-control" value="{{ v[1] }}" required>
+                </div>
+                <div class="col-md-3">
+                    <input name="phone" class="form-control" value="{{ v[2] }}" required>
+                </div>
+                <div class="col-md-2">
+                    <input name="city" class="form-control" value="{{ v[3] }}" required>
+                </div>
+                <div class="col-md-2">
+                    <input name="type" class="form-control" value="{{ vtype }}" readonly>
+                </div>
+            </div>
+
+            {% if vtype == "Driver" %}
+            <div class="row g-2 mb-3">
+                <div class="col-md-3">
+                    <input name="license_number" class="form-control" placeholder="License Number" value="{{ extra.license_number }}" required>
+                </div>
+                <div class="col-md-2">
+                    <select name="night_avail" class="form-select" required>
+                        <option value="">Night Available?</option>
+                        <option value="Y" {% if extra.night_avail == 'Y' %}selected{% endif %}>Yes</option>
+                        <option value="N" {% if extra.night_avail == 'N' %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+            </div>
+            {% elif vtype == "Service Assistant" %}
+            <div class="row g-2 mb-3">
+                <div class="col-md-3">
+                    <input name="role" class="form-control" placeholder="Role" value="{{ extra.role }}" required>
+                </div>
+                <div class="col-md-3">
+                    <input name="volunteers_at" class="form-control" placeholder="Medical Center Name" value="{{ extra.volunteers_at }}" required>
+                </div>
+                <div class="col-md-3">
+                    <input name="sc_address" class="form-control" placeholder="Medical Center Address" value="{{ extra.sc_address }}" required>
+                </div>
+            </div>
+            {% elif vtype == "Transport Assistant" %}
+            <div class="row g-2 mb-3">
+                <div class="col-md-3">
+                    <select name="has_medical_training" class="form-select" required>
+                        <option value="">Medical Training?</option>
+                        <option value="Y" {% if extra.has_medical_training == 'Y' %}selected{% endif %}>Yes</option>
+                        <option value="N" {% if extra.has_medical_training == 'N' %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+            </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{ url_for('volunteers') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+</body>
+</html>
