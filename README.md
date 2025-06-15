@@ -759,5 +759,110 @@ From there, you can navigate between the different sections using the top naviga
 
 #### Development Stack and Workflow
 
+This project was developed using a clean and modular full-stack approach to ensure maintainability, scalability, and ease of collaboration.
+
+### 🔧 Technologies Used
+
+- **Python 3.9+** – Main programming language for backend development
+- **Flask** – Lightweight Python web framework used to build the backend logic and routing
+- **PostgreSQL** – Relational database used to store structured data
+- **psycopg2-binary** – PostgreSQL adapter for Python, used to connect Flask to the database
+- **pgAdmin** – GUI client for managing and inspecting the PostgreSQL database
+- **HTML5 & CSS3** – Markup and styling for all frontend pages
+- **Bootstrap** – For responsive layout and consistent UI elements
+- **Docker** *(optional)* – Used to containerize PostgreSQL and pgAdmin services for consistent development environments
+
+### ⚙️ Development Workflow
+
+1. **Database Schema Design**
+   - Tables were created with appropriate primary and foreign keys to reflect real-world relationships (e.g. volunteers, patients, rides, borrowed equipment).
+   - Data integrity was enforced using constraints and trigger logic.
+
+2. **Backend Development**
+   - Each major route (e.g., `/volunteers`, `/patients`, `/rides`) was implemented using Flask.
+   - Business logic and database queries were written in Python with clear separation between view functions and utility code.
+
+3. **Frontend Integration**
+   - HTML templates and static CSS files were used to create clean, accessible user interfaces.
+   - Bootstrap was optionally used for layout and responsive design.
+
+4. **Testing**
+   - Manual testing was performed through the web interface and via pgAdmin for database queries.
+   - Error handling, validation, and constraint enforcement were verified on all critical user paths.
+
+5. **Deployment Support**
+   - The system supports both local setup and Docker-based deployment.
+   - Docker Compose is provided for quick setup of PostgreSQL and pgAdmin environments.
+
+6. **Version Control**
+   - Git was used throughout development for tracking changes, managing features, and ensuring safe collaboration.
+
+---
+
+This stack was selected for its balance of simplicity, performance, and ease of setup—especially for educational and team-based development.
 
 #### User Interface Demonstration
+
+The web application provides a clean and intuitive user interface for managing volunteers, patients, rides, and borrowed equipment.
+
+---
+
+### 🏠 Home Page
+- Displays upcoming volunteer birthdays for the current week.
+- Provides a brief description of the system.
+- Navigation bar allows access to all key sections.
+  
+![צילום מסך 2025-06-08 141458](https://github.com/user-attachments/assets/a9074dda-76d9-4cd7-9f4d-ace02da16ece)
+
+---
+
+### 👥 Volunteers Page
+- Lists all registered volunteers with name, birthdate, contact info, and assigned role (Driver, Service Assistant, or Transport Assistant).
+- Add, edit, or delete volunteers.
+- Includes a **monthly top-3 volunteers podium** based on the number of completed rides.
+
+![צילום מסך 2025-06-09 143321](https://github.com/user-attachments/assets/b54b87b5-a4fa-434b-8fb4-4463f15b5c12)
+
+---
+
+### 🏥 Patients Page
+- Displays all patients with their personal information, disability status, and medical equipment (if assigned).
+- Allows adding, editing, or deleting patients.
+- Deletion is restricted for patients assigned to active rides.
+
+![צילום מסך 2025-06-09 143407](https://github.com/user-attachments/assets/2ba9ecfb-2c48-401a-b14d-6281176ecd14)
+
+---
+
+### 🚗 Rides Page
+- Lists all scheduled rides with full details: date, time, patient, driver, optional assistant, and destination.
+- Add new rides by selecting from existing volunteers, vehicles, and medical centers.
+- Edit ride date/time, or delete a ride when constraints allow.
+- Includes a button to **automatically assign available assistants** using a stored procedure.
+
+![צילום מסך 2025-06-08 141710](https://github.com/user-attachments/assets/77f776cb-7a2d-4a52-bfa2-99d21a2b7eae)
+
+---
+
+### 🩺 Borrowed Equipment Page
+- Displays all borrowed equipment records: patient, product, date, return status, and service center.
+- Allows marking equipment as returned.
+- Only returned equipment can be deleted.
+- Equipment can be added from existing patient/product/service center lists.
+
+![צילום מסך 2025-06-08 141740](https://github.com/user-attachments/assets/e2598640-76ab-4d89-8d34-ea3ede3220f2)
+
+---
+
+### ⏰ Expired Borrowed Equipment
+- Accessible from the "Borrowed Equipment" section.
+- Displays all unreturned borrowed items where the associated product's warranty has expired.
+- Includes patient name, phone number, product, and warranty expiration date.
+
+![צילום מסך 2025-06-09 143357](https://github.com/user-attachments/assets/57d8cf60-3225-4a3c-9f69-087e55bd0f7c)
+
+---
+
+This user interface was designed to ensure efficient navigation and clear data management for all system entities.
+
+
